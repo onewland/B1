@@ -16,7 +16,7 @@ ELSE(FLTK_FOUND)
 	"FLTK not found. Please set FLTK_DIR.")
 ENDIF(FLTK_FOUND)
 
-ADD_EXECUTABLE(ImageReg IterativeClosestPoint1.cxx 
+ADD_EXECUTABLE(ImageReg IterativeClosestPoint.cxx 
 						itkImageToVTKImageFilter.txx
 						vtkFlRenderWindowInteractor.cxx)
 
