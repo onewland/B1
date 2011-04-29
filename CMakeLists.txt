@@ -9,16 +9,16 @@ FIND_PACKAGE(X11)
 INCLUDE(${ITK_USE_FILE})
 INCLUDE(${VTK_USE_FILE})
 
-IF(FLTK_FOUND)
-	INCLUDE_DIRECTORIES(${FLTK_INCLUDE_DIR})
-ELSE(FLTK_FOUND)
-	MESSAGE(FATAL_ERROR
-	"FLTK not found. Please set FLTK_DIR.")
-ENDIF(FLTK_FOUND)
+ADD_EXECUTABLE(ImageReg itkImageToVTKImageFilter.txx
+			itkRegistrationPipelineManager.cxx
+			vtkFlRenderWindowInteractor.cxx
+			vtkItkSourceViewer.cxx
+			vtkPointSelectorStyle.cxx
+			IterativeClosestPoint.cxx
+		    PerformRegistrationButton.h
+		    InputImageFiltersDialog.h)
 
-ADD_EXECUTABLE(ImageReg IterativeClosestPoint.cxx 
-						itkImageToVTKImageFilter.txx
-						vtkFlRenderWindowInteractor.cxx)
+INCLUDE_DIRECTORIES(${FLTK_INCLUDE_DIRS})
 
 IF(X11_FOUND)
 	TARGET_LINK_LIBRARIES(ImageReg ${X11_LIBRARIES} Xft Xinerama)
